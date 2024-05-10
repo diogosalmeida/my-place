@@ -16,7 +16,7 @@
 
 - **Spring Boot**: Framework para desenvolvimento de aplicações Java com microserviços.
 - **Neo4j**: Banco de dados de grafos que facilita relações complexas e consultas eficientes.
-- **Maven**: Ferramenta de automação de build.
+- **Gradle**: Ferramenta de automação de build.
 
 ## Configuração do Ambiente
 

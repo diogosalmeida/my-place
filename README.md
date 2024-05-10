@@ -23,7 +23,7 @@
 ### Pré-requisitos
 
 - Java JDK 11 ou superior
-- Maven 3.6 ou superior
+- Gradle
 - Neo4j Database 4.0 ou superior
 - IDE de sua preferência (recomendado: IntelliJ IDEA ou Eclipse)
 

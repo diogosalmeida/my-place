@@ -41,4 +41,11 @@ public class User {
 
     @Relationship(type = "LIKES")
     private Set<Place> likedPlaces = new HashSet<>();
+
+    @Relationship(type = "FOLLOWS", direction = Relationship.Direction.OUTGOING)
+    private Set<User> following = new HashSet<>();
+
+    public void follow(User user) {
+        following.add(user);
+    }
 }

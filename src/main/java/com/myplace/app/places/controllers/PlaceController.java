@@ -2,6 +2,7 @@ package com.myplace.app.places.controllers;
 
 import com.myplace.app.places.models.Place;
 import com.myplace.app.places.repositories.PlaceRepository;
+import com.myplace.app.places.services.PlaceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,27 +18,25 @@ import java.util.List;
 @RequestMapping("/places")
 public class PlaceController {
 
-    private final PlaceRepository placeRepository;
+    private final PlaceService placeService;
 
-    public PlaceController(final PlaceRepository placeRepository) {
-        this.placeRepository = placeRepository;
+    public PlaceController(final PlaceService placeService) {
+        this.placeService = placeService;
     }
 
     @PostMapping("/create")
-    public ResponseEntity<Place> createPlace(@RequestBody Place place) {
-        Place savedPlace = placeRepository.save(place);
-        return ResponseEntity.ok(savedPlace);
+    public ResponseEntity<Place> createPlace(final @RequestBody Place place) {
+       return ResponseEntity.ok(placeService.createPlace(place));
     }
 
     @GetMapping
     public ResponseEntity<List<Place>> getAllPlaces() {
-        List<Place> places = placeRepository.findAll();
-        return ResponseEntity.ok(places);
+        return ResponseEntity.ok(placeService.getAllPlaces());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Place> getPlaceById(@PathVariable Long id) {
-        return placeRepository.findById(id)
+    public ResponseEntity<Place> getPlaceById(final @PathVariable Long id) {
+        return placeService.getPlaceById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
